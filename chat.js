@@ -19,13 +19,17 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-      console.error("Erro da OpenAI:", data);
-      return res.status(500).json({ error: "Erro da OpenAI: " + (data.error?.message || "Resposta inválida") });
+      return res.status(500).json({
+        error: "Erro da OpenAI",
+        details: data,
+      });
     }
 
     res.status(200).json({ reply: data.choices[0].text.trim() });
   } catch (error) {
-    console.error("Erro interno:", error);
-    res.status(500).json({ error: "Erro interno ao acessar o serviço de IA." });
+    res.status(500).json({
+      error: "Erro interno",
+      details: error.message,
+    });
   }
 }

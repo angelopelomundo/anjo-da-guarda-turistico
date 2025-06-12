@@ -1,15 +1,34 @@
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anjo da Guarda Turístico</title>
+  <title>AnjoGuia</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Bem-vindo ao Anjo da Guarda Turístico</h1>
-  <p>Seu companheiro inteligente de viagem.</p>
+  <header>
+    <h1>AnjoGuia: Seu protetor de viagem</h1>
+  </header>
+
+  <main>
+    <section>
+      <p>Encontre locais típicos, segurança, clima e orientação com nosso assistente!</p>
+    </section>
+
+    <section id="chat">
+      <h2>Chat com IA</h2>
+      <div id="chat-window"></div>
+      <input type="text" id="user-input" placeholder="Digite sua pergunta..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 AnjoGuia</p>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>

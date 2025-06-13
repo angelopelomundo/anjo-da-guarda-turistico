@@ -6,25 +6,6 @@
   <title>AnjoGuia</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-<script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.carousel-container a');
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-  }
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
-  }
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-  // Inicializa o carrossel
-  showSlide(currentSlide);
-</script>
 <body>
   <header>
     <h1>AnjoGuia: Seu protetor de viagem</h1>
@@ -40,30 +21,33 @@
       <p id="phrase">Clique no botão abaixo para se inspirar!</p>
       <button onclick="showPhrase()">Inspirar-se</button>
     </section>
+
+    <section id="carrossel">
+      <h2>Locais em Destaque</h2>
+      <div class="carousel-container">
+        <a href="https://maps.google.com/?q=Endereço+1" target="_blank">
+          <img src="foto1.jpg" alt="Local 1">
+        </a>
+        <a href="https://maps.google.com/?q=Endereço+2" target="_blank">
+          <img src="foto2.jpg" alt="Local 2">
+        </a>
+        <a href="https://maps.google.com/?q=Endereço+3" target="_blank">
+          <img src="foto3.jpg" alt="Local 3">
+        </a>
+        <!-- Adicione mais imagens e links conforme quiser -->
+      </div>
+      <button onclick="prevSlide()">⟨</button>
+      <button onclick="nextSlide()">⟩</button>
+    </section>
   </main>
-<section id="carrossel">
-  <h2>Locais em Destaque</h2>
-  <div class="carousel-container">
-    <a href="https://maps.google.com/?q=Endereço+1" target="_blank">
-      <img src="foto1.jpg" alt="Local 1">
-    </a>
-    <a href="https://maps.google.com/?q=Endereço+2" target="_blank">
-      <img src="foto2.jpg" alt="Local 2">
-    </a>
-    <a href="https://maps.google.com/?q=Endereço+3" target="_blank">
-      <img src="foto3.jpg" alt="Local 3">
-    </a>
-    <!-- Adicione mais imagens e links conforme quiser -->
-  </div>
-  <button onclick="prevSlide()">⟨</button>
-  <button onclick="nextSlide()">⟩</button>
-</section>
+
   <footer>
     <p>© 2025 AnjoGuia</p>
   </footer>
 
   <script src="script.js"></script>
   <script>
+    // Frases motivacionais
     function showPhrase() {
       const phrases = [
         "Viajar é a única coisa que você compra e te deixa mais rico.",
@@ -75,6 +59,26 @@
       const randomIndex = Math.floor(Math.random() * phrases.length);
       document.getElementById("phrase").innerText = phrases[randomIndex];
     }
+
+    // Carrossel de fotos
+    document.addEventListener("DOMContentLoaded", function() {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-container a');
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
+      window.prevSlide = function() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+      window.nextSlide = function() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+      showSlide(currentSlide);
+    });
   </script>
 </body>
 </html>

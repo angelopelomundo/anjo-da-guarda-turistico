@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,6 +22,12 @@
       <input type="text" id="user-input" placeholder="Digite sua pergunta..." />
       <button onclick="sendMessage()">Enviar</button>
     </section>
+
+    <section id="motivational">
+      <h2>Frases Motivacionais</h2>
+      <p id="phrase">Clique no botão abaixo para se inspirar!</p>
+      <button onclick="showPhrase()">Inspirar-se</button>
+    </section>
   </main>
 
   <footer>
@@ -30,5 +35,18 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    function showPhrase() {
+      const phrases = [
+        "Viajar é a única coisa que você compra e te deixa mais rico.",
+        "O mundo é um livro e quem não viaja lê apenas uma página.",
+        "A aventura está lá fora — só depende de você vivê-la!",
+        "Descubra novos lugares e, ao mesmo tempo, descubra a si mesmo.",
+        "Cada viagem é uma história para contar e uma memória para guardar."
+      ];
+      const randomIndex = Math.floor(Math.random() * phrases.length);
+      document.getElementById("phrase").innerText = phrases[randomIndex];
+    }
+  </script>
 </body>
 </html>

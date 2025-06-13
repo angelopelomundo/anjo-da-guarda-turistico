@@ -1,95 +1,167 @@
-
-body {
-  font-family: Arial, sans-serif;
+/* Reset básico */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: #f3f3f3;
-  color: #333;
 }
 
-header, footer {
-  background: #4a90e2;
-  color: white;
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7fafc;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #3e8ed0;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
   text-align: center;
-  padding: 1em;
+  box-shadow: 0 2px 6px #0001;
 }
 
 main {
-  padding: 2em;
+  flex: 1 0 auto;
+  padding: 2rem 1rem 0 1rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-#chat {
-  margin-top: 2em;
-  background: #fff;
-  border-radius: 8px;
-  padding: 1em;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-#chat-window {
-  height: 200px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  padding: 1em;
-  margin-bottom: 1em;
-  background: #fafafa;
-}
-
-input[type="text"] {
-  width: 70%;
-  padding: 0.5em;
-}
-
-button {
-  padding: 0.5em 1em;
-  background: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 4px;
-}
-
-#carrossel {
-  max-width: 500px;
-  margin: 40px auto;
+/* Motivational Section */
+#motivational {
+  background: #e6f2ff;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  margin: 2rem 0;
   text-align: center;
-  position: relative;
+  box-shadow: 0 1px 4px #0001;
 }
+
+#motivational h2 {
+  color: #265a88;
+  margin-bottom: .75rem;
+}
+
+#motivational button {
+  background: #3e8ed0;
+  color: #fff;
+  border: none;
+  padding: .7rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#motivational button:hover {
+  background: #265a88;
+}
+
+/* Carrossel */
+#carrossel {
+  margin: 2.5rem 0;
+  text-align: center;
+}
+#carrossel h2 {
+  color: #265a88;
+  margin-bottom: 1rem;
+}
+
 .carousel-container {
   display: flex;
-  overflow: hidden;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+  min-height: 220px;
 }
+
 .carousel-container a {
-  min-width: 100%;
-  transition: transform 0.5s;
-  display: none;
-}
-.carousel-container a.active {
-  display: block;
-}
-#carrossel button {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #fff;
-  border: none;
-  font-size: 2em;
-  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 400px;
   z-index: 1;
 }
-#carrossel button:first-of-type {
-  left: 0;
+
+.carousel-container a.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
 }
-#carrossel button:last-of-type {
-  right: 0;
-}
-#carrossel img {
+
+.carousel-container img {
   width: 100%;
-  height: auto;
+  height: 220px;
+  object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 10px #0001;
+  border: 3px solid #fff;
+}
+
+#carrossel button {
+  background: #3e8ed0;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin: 0 .4rem;
+  box-shadow: 0 1px 4px #0001;
+  transition: background 0.2s;
+  vertical-align: middle;
+}
+#carrossel button:hover {
+  background: #265a88;
+}
+
+/* Footer */
+footer {
+  background: #3e8ed0;
+  color: #fff;
+  text-align: center;
+  padding: 1.2rem 0;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2rem;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+  main {
+    padding: 1rem .3rem 0 .3rem;
+  }
+  .carousel-container img {
+    height: 150px;
+  }
+}
+@media (max-width: 500px) {
+  header {
+    font-size: .9rem;
+    padding: 1rem 0 .5rem 0;
+  }
+  .carousel-container img {
+    height: 100px;
+  }
+  #motivational, #carrossel {
+    padding: .5rem;
+  }
+}
+
+/* Pequeno destaque para o parágrafo principal */
+main > section:first-child p {
+  font-size: 1.15rem;
+  font-weight: bold;
+  color: #265a88;
+  margin-bottom: 1.2rem;
 }

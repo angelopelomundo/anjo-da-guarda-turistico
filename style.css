@@ -47,3 +47,49 @@ button {
   border: none;
   border-radius: 4px;
 }
+
+#carrossel {
+  max-width: 500px;
+  margin: 40px auto;
+  text-align: center;
+  position: relative;
+}
+.carousel-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+.carousel-container a {
+  min-width: 100%;
+  transition: transform 0.5s;
+  display: none;
+}
+.carousel-container a.active {
+  display: block;
+}
+#carrossel button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 1;
+}
+#carrossel button:first-of-type {
+  left: 0;
+}
+#carrossel button:last-of-type {
+  right: 0;
+}
+#carrossel img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}

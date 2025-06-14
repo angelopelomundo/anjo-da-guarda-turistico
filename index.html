@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>AnjoGuia: Seu protetor de viagem</h1>
+  <header style="display: flex; align-items: center; gap: 15px; padding: 10px;">
+    <img src="logo anjoguia.png" alt="Logo Anjoguia" width="60" height="60" style="border-radius: 10px;">
+    <h1 style="font-size: 24px; color: #0077cc;">AnjoGuia: Seu protetor de viagem</h1>
   </header>
 
   <main>
@@ -34,7 +35,6 @@
         <a href="https://maps.app.goo.gl/wLmy4JBVuCm2UC2k9" target="_blank">
           <img src="rio-vermelho.jpg" alt="rio vermelho">
         </a>
-        <!-- Adicione mais imagens e links conforme quiser -->
       </div>
       <button onclick="prevSlide()">⟨</button>
       <button onclick="nextSlide()">⟩</button>
@@ -47,7 +47,6 @@
 
   <script src="script.js"></script>
   <script>
-    // Frases motivacionais
     function showPhrase() {
       const phrases = [
         "Viajar é a única coisa que você compra e te deixa mais rico.",
@@ -60,7 +59,6 @@
       document.getElementById("phrase").innerText = phrases[randomIndex];
     }
 
-    // Carrossel de fotos
     document.addEventListener("DOMContentLoaded", function() {
       let currentSlide = 0;
       const slides = document.querySelectorAll('.carousel-container a');

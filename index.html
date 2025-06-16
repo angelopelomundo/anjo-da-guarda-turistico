@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
@@ -7,38 +7,35 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header style="
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: #0077cc;
-  ">
-    <img src="logo anjoguia.jpg" alt="Logo Anjoguia"
-         style="max-width: 90%; height: auto; margin-bottom: 15px; border-radius: 12px;">
-    <h1 style="
-      font-size: 24px;
-      text-align: center;
-      color: #FFFFFF;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    ">AnjoGuia: Seu protetor de viagem</h1>
-  </header>
+<header style="
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #0077cc;
+">
+  <img src="logo anjoguia.jpg" alt="Logo Anjoguia"
+       style="max-width: 90%; height: auto; margin-bottom: 15px; border-radius: 12px;">
+  <h1 style="
+    font-size: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+  ">AnjoGuia: Seu protetor de viagem</h1>
+</header>
 
   <main>
-    <!-- Mensagem principal -->
     <section>
       <p>Encontre locais típicos, segurança, clima e orientação com nosso assistente!</p>
     </section>
 
-    <!-- Frases motivacionais -->
     <section id="motivational">
       <h2>Frases Motivacionais</h2>
       <p id="phrase">Clique no botão abaixo para se inspirar!</p>
       <button onclick="showPhrase()">Inspirar-se</button>
     </section>
 
-    <!-- Carrossel de locais -->
     <section id="carrossel">
       <h2>Locais em Destaque</h2>
       <div class="carousel-container">
@@ -55,51 +52,44 @@
       <button onclick="prevSlide()">⟨</button>
       <button onclick="nextSlide()">⟩</button>
     </section>
-
-    <!-- Formulário e Galeria de Parceiros -->
-    <section id="parceiros">
-      <h2>Seja nosso parceiro</h2>
-      <form id="partnerForm">
-        <div>
-          <label for="name">Nome</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-          <label for="description">Descrição</label>
-          <input type="text" id="description" name="description" required>
-        </div>
-        <div>
-          <label for="image">Imagem (URL)</label>
-          <input type="url" id="image" name="image" required>
-        </div>
-        <div>
-          <label for="gmaps">Google Maps (URL)</label>
-          <input type="url" id="gmaps" name="gmaps" required>
-        </div>
-        <button type="submit">
-          Adicionar Parceiro
-        </button>
-      </form>
-
-      <h2>Parceiros</h2>
-      <div id="partnersGallery"></div>
-    </section>
-
-    <!-- Exemplo de chat, se você usar -->
-    <!--
-    <section id="chat">
-      <div id="chat-window" style="height: 180px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; margin-bottom: 8px;"></div>
-      <input type="text" id="user-input" placeholder="Digite sua mensagem..." style="width: 70%;">
-      <button onclick="sendMessage()">Enviar</button>
-    </section>
-    -->
   </main>
 
   <footer>
     <p>© 2025 AnjoGuia</p>
   </footer>
 
-  <!-- JavaScript centralizado no arquivo externo -->
   <script src="script.js"></script>
+  <script>
+    function showPhrase() {
+      const phrases = [
+        "Viajar é a única coisa que você compra e te deixa mais rico.",
+        "O mundo é um livro e quem não viaja lê apenas uma página.",
+        "A aventura está lá fora — só depende de você vivê-la!",
+        "Descubra novos lugares e, ao mesmo tempo, descubra a si mesmo.",
+        "Cada viagem é uma história para contar e uma memória para guardar."
+      ];
+      const randomIndex = Math.floor(Math.random() * phrases.length);
+      document.getElementById("phrase").innerText = phrases[randomIndex];
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-container a');
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === index);
+        });
+      }
+      window.prevSlide = function() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+      window.nextSlide = function() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+      showSlide(currentSlide);
+    });
+  </script>
 </body>
 </html>
